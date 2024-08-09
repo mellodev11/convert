@@ -43,8 +43,14 @@ amount.addEventListener('input', () =>{
         try {
           description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
           
-          let total = amount * price
-          result.textContent = total
+          let total = (amount*price).toFixed(2)
+
+            if(isNaN(total)){
+                return alert("Digite o valor corretamente")
+            }
+
+          result.textContent = `${total} Reais`
+          total = formatCurrencyBRL(total).replace("R$", "")
           
           footer.classList.add("show-result")
         } catch (error) {
