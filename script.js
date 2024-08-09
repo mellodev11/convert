@@ -9,6 +9,8 @@ const amount = document.getElementById('amount')
 const currency = document.getElementById('currency')
 const footer = document.querySelector('main footer')
 const description = document.getElementById('description')
+const result = document.getElementById('result')
+
 
 
 
@@ -39,12 +41,22 @@ amount.addEventListener('input', () =>{
     //função converter a moeda
     function convertCurrency(amount, price, symbol){
         try {
-          description.textContent = `${symbol} 1 = ${price}`
-            footer.classList.add("show-result")
+          description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
+          
+          let total = amount * price
+          result.textContent = total
+          
+          footer.classList.add("show-result")
         } catch (error) {
             footer.classList.remove("show-result")
             alert("não foi possivel converter")
         }
+    }
+    function formatCurrencyBRL(value){
+        return Number(value).toLocaleString('pt-BR', {
+            style: "currency",
+            currency: "BRL"
+        })
     }
 
 
