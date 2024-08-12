@@ -55,7 +55,7 @@ function convertCurrency(amount, price, symbol) {
             return alert("Digite o valor corretamente")
         }
         
-        result.textContent = `${total} Reais`
+        result.textContent = `${total} R$`
         total = formatCurrencyBRL(total).replace("R$", "")
 
         footer.classList.add("show-result")
@@ -92,10 +92,10 @@ fetch(url + coins)
     .then(response => response.json())
     .then(data => {
 
-        USD = parseFloat(data.USDBRL.bid)
-        EUR = parseFloat(data.EURBRL.bid)
-        GBP = parseFloat(data.GBPBRL.bid)
-        BTC = parseFloat(data.BTCBRL.bid)
+        USD = parseFloat(data.USDBRL.bid).toFixed(2)
+        EUR = parseFloat(data.EURBRL.bid).toFixed(2)
+        GBP = parseFloat(data.GBPBRL.bid).toFixed(2)
+        BTC = parseFloat(data.BTCBRL.bid).toFixed(2)
 
     })
     .catch(error => {
